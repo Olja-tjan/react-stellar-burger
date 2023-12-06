@@ -34,25 +34,3 @@ function AppHeader() {
 }
 
 export default AppHeader;
-
-// <div className={styles.app}>
-//     <div
-//         style={{ backgroundColor: '#0B5FFF', color: 'white' }}
-//         className="pb-4 pt-4"
-//     >
-//         padding-bottom 16px: (4px × 4 = 16px) <br />
-//         padding-top: 16px (4px × 4 = 16px)
-//     </div>
-//     <p className="text text_type_main-default">
-//         The quick brown fox jumps over the lazy dog.
-//     </p>
-//     <p className="text text_type_main-default text_color_inactive">
-//         The quick brown fox jumps over the lazy dog.
-//     </p>
-//     <pre style={{
-//         margin: "auto",
-//         fontSize: "1.5rem"
-//     }}>
-//         Измените src/components/app/app.jsx и сохраните для обновления.
-//     </pre>
-// </div>
