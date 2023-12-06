@@ -53,10 +53,5 @@
 
 .link {
   text-decoration: none;
-  color: rgba(133, 133, 173, 1);
-}
-
-.activeLink {
-  composes: link;
   color: white;
 }

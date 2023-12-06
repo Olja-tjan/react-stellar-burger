@@ -10,11 +10,11 @@ function AppHeader() {
         <ul className={styles.list}>
           <li className={`${styles.item} pl-5 pt-4 pr-5 pb-4`}>
             <BurgerIcon type="primary" />
-            <a className={styles.activeLink} href="">Конструктор</a>
+            <a className={`${styles.link} text text_type_main-default`} href="">Конструктор</a>
           </li>
           <li className={`${styles.item} pl-5 pt-4 pr-5 pb-4`}>
             <ListIcon type="secondary" />
-            <a className={styles.link} href="">Лента заказов</a>
+            <a className={`${styles.link} text text_type_main-default text_color_inactive`} href="">Лента заказов</a>
           </li>
         </ul>
       </nav>
@@ -25,7 +25,7 @@ function AppHeader() {
         <ul className={styles.list}>
           <li className={`${styles.item} pl-5 pt-4 pr-5 pb-4`}>
             <ProfileIcon type="secondary" />
-            <a className={styles.link} href="">Личный кабинет</a>
+            <a className={`${styles.link} text text_type_main-default text_color_inactive`} href="">Личный кабинет</a>
           </li>
         </ul>
       </nav>
