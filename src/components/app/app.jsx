@@ -2,6 +2,7 @@ import styles from "./app.module.css";
 
 import AppHeader from "../app-header/app-header";
 import BurgerIngredients from "../burger-ingredients/burger-ingredients";
+import BurgerConstructor from "../burger-constructor/burger-constructor";
 
 
 function App() {
@@ -10,33 +11,7 @@ function App() {
       <AppHeader />
       <main className={styles.container}>
         <BurgerIngredients />
-
-        <section>
-          <div>
-            <img src="" alt="" />
-            <img src="" alt="" />
-            <p></p>
-            <p></p>
-            <img src="" alt="" />
-          </div>
-          <div>
-            <img src="" alt="" />
-            <img src="" alt="" />
-            <p></p>
-            <p></p>
-            <img src="" alt="" />
-          </div>
-          <div>
-            <img src="" alt="" />
-            <p></p>
-            <p></p>
-            <button></button>
-          </div>
-          <div>
-            <p></p>
-            <button></button>
-          </div>
-        </section>
+        <BurgerConstructor />
       </main>
 
     </div>
