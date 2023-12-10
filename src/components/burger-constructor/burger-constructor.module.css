@@ -10,7 +10,7 @@
   flex-direction: column;
   gap: 16px;
   justify-content: space-between;
-  height: 656px;
+  height: 696px;
   box-sizing: border-box;
   transition: outline-color 0.3s ease;
 }
@@ -25,9 +25,18 @@
   list-style: none;
 }
 
+.ingredientsCenterContainer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
 .ingredientsCenter {
   composes: ingredientsTop;
   padding: 0;
+  padding-right: 4px;
+  margin-right: -20px;
+  max-height: 464px;
   overflow-y: scroll;
 }
 

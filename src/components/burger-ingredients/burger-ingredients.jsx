@@ -1,75 +1,74 @@
+import { useState, useRef } from 'react';
 import styles from "./burger-ingredients.module.css";
-import { data } from "../../utils/data";
 import { Counter, CurrencyIcon, Tab, Box, Typography } from '@ya.praktikum/react-developer-burger-ui-components';
+import Ingredient from "../Ingredient/Ingredient";
 
 
-function BurgerIngredients() {
+function BurgerIngredients({ items }) {
 
-  // const [current, setCurrent] = React.useState('Булки')
-  
+const [current, setCurrent] = useState('bun');
+
   return (
     <section className={`${styles.container} pt-10`}>
       <h1 className="text text_type_main-large mb-5">Соберите бургер</h1>
-
-      {/* <div style={{ display: 'flex' }}>
-        <Tab value="Булки" active={current === 'Булки'} onClick={setCurrent}>
+      <div style={{ display: 'flex' }}>
+        <Tab value="bun" active={current === 'bun'} onClick={setCurrent}>
           Булки
         </Tab>
-        <Tab value="Соусы" active={current === 'Соусы'} onClick={setCurrent}>
+        <Tab value="sauce" active={current === 'sauce'} onClick={setCurrent}>
           Соусы
         </Tab>
-        <Tab value="Начинки" active={current === 'Начинки'} onClick={setCurrent}>
+        <Tab value="main" active={current === 'main'} onClick={setCurrent}>
           Начинки
         </Tab>
-      </div> */}
-      
-      <ul className={`${styles.ingredientsContainer} custom-scroll`}>
+      </div>
+
+      <ul  className={`${styles.ingredientsContainer} custom-scroll`}>
         <li className={`${styles.ingredientType} pt-8`}>
           <h2 className="text text_type_main-medium">Булки</h2>
           <ul className={`${styles.ingredients} pl-4 pr-4 pt-6`}>
-            <li className={styles.ingredient}>
-              <a className={styles.link} href="">
-                <Counter count={1} size="default" extraClass="m-1" />
-                <img className={styles.img} src="" alt="" />
-                <div className={styles.price}>
-                  <span className="text text_type_digits-default">0</span>
-                  <CurrencyIcon type="primary" />
-                </div>
-                <p className="text text_type_main-default"></p>
-              </a>
-            </li>
+            {items.map((item) => {
+              if (item.type === "bun") {
+                return (
+                  <Ingredient
+                    key={item._id}
+                    props={item}
+                  />
+                );
+              }
+            })}
           </ul>
         </li>
 
         <li className={`${styles.ingredientType} pt-8`}>
           <h2 className="text text_type_main-medium">Соусы</h2>
           <ul className={`${styles.ingredients} pl-4 pr-4 pt-6`}>
-            <li className={styles.ingredient}>
-              <a className={styles.link} href="">
-                <img className={styles.img} src="" alt="" />
-                <div className={styles.price}>
-                  <span className="text text_type_digits-default">0</span>
-                  <CurrencyIcon type="primary" />
-                </div>
-                <p className="text text_type_main-default"></p>
-              </a>
-            </li>
+            {items.map((item) => {
+              if (item.type === "sauce") {
+                return (
+                  <Ingredient
+                    key={item._id}
+                    props={item}
+                  />
+                );
+              }
+            })}
           </ul>
         </li>
 
         <li className={`${styles.ingredientType} pt-8`}>
           <h2 className="text text_type_main-medium">Начинки</h2>
           <ul className={`${styles.ingredients} pl-4 pr-4 pt-6`}>
-            <li className={styles.ingredient}>
-              <a className={styles.link} href="">
-                <img className={styles.img} src="" alt="" />
-                <div className={styles.price}>
-                  <span className="text text_type_digits-default">0</span>
-                  <CurrencyIcon type="primary" />
-                </div>
-                <p className="text text_type_main-default"></p>
-              </a>
-            </li>
+            {items.map((item) => {
+              if (item.type === "main") {
+                return (
+                  <Ingredient
+                    key={item._id}
+                    props={item}
+                  />
+                );
+              }
+            })}
           </ul>
         </li>
       </ul>
