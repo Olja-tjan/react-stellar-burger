@@ -2,9 +2,6 @@
   position: relative;
   max-width: 272px;
   width: 100%;
-}
-
-.link {
   display: flex;
   flex-direction: column;
   align-items: center;

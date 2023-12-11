@@ -1,10 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from "./app.module.css";
-
 import AppHeader from "../app-header/app-header";
 import BurgerIngredients from "../burger-ingredients/burger-ingredients";
 import BurgerConstructor from "../burger-constructor/burger-constructor";
-
 import { urlIngredients } from "../../utils/api";
 
 function App() {  
@@ -18,30 +16,32 @@ function App() {
       const data = await res.json();
       try {
         setIsLoaded(false);
-        setIngredients(data.data);  
-        
+        setIngredients(data.data);
       } catch (err) {
         setError(err.message);
       }
     }
-
     getIngredientsData();
   }, [])
 
   if (isLoaded === false && ingredients.length > 0) {
     return (
       <div className="p-10">
+
         <AppHeader />
+
         <main className={styles.container}>
           <BurgerIngredients items={ingredients} />
           <BurgerConstructor items={ingredients} />
-        </main>  
+        </main>
+        
       </div>
     )
   } else {
-    return(
+    return (
       <div>Ошибка: {error}</div>
-    )}
+    )
+  }
 }
 
 export default App;
