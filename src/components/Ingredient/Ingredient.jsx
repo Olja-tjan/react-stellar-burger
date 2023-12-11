@@ -12,7 +12,7 @@ function Ingredient({ props, handleOpenModal }) {
   return (
     <li key={props._id} className={styles.ingredient} onClick={handleOpenModal}>
 
-      {/* <Counter count={1} size="default" extraClass="m-1" /> */}
+      <Counter count={1} size="default" extraClass="m-1" />
 
       <img className={styles.img} src={props.image} alt={props.name} />
 

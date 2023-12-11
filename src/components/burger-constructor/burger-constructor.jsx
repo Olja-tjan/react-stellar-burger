@@ -78,7 +78,7 @@ function BurgerConstructor({ items }) {
         <div className={`${styles.totalPriceContainer} mt-5 pr-8`}>
 
           <div className={`${styles.totalPrice}`}>
-            <p className="text text_type_digits-medium">0</p>
+            <p className="text text_type_digits-medium">610</p>
             <CurrencyIcon type="primary" />
           </div>
 
