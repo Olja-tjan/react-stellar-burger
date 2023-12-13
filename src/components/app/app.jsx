@@ -5,7 +5,7 @@ import BurgerIngredients from "../burger-ingredients/burger-ingredients";
 import BurgerConstructor from "../burger-constructor/burger-constructor";
 import { urlIngredients } from "../../utils/api";
 
-function App() {  
+function App() {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(true);
   const [ingredients, setIngredients] = useState([]);
@@ -16,13 +16,14 @@ function App() {
         const res = await fetch(urlIngredients);
         if (res.ok) {
           const data = await res.json();
-          return setIsLoaded(false),
-          setIngredients(data.data);
+          return setIngredients(data.data);
         } else {
           return Promise.reject(`Ошибка: ${res.status}`);
         }
       } catch (err) {
         setError(err.message);
+      } finally {
+        return setIsLoaded(false);
       }
     }
     getIngredientsData();
@@ -38,7 +39,7 @@ function App() {
           <BurgerIngredients items={ingredients} />
           <BurgerConstructor items={ingredients} />
         </main>
-        
+
       </div>
     )
   } else {
