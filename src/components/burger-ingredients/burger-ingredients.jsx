@@ -52,7 +52,7 @@ function BurgerIngredients({ items }) {
                   return (
                     <Ingredient
                       key={item._id}
-                      props={item}
+                      ingredientItem={item}
                       handleOpenModal={() => {
                         setModalIngredient(item)
                         setVisible(true)
@@ -72,7 +72,7 @@ function BurgerIngredients({ items }) {
                   return (
                     <Ingredient
                       key={item._id}
-                      props={item}
+                      ingredientItem={item}
                       handleOpenModal={() => {
                         setModalIngredient(item)
                         setVisible(true)
@@ -92,7 +92,7 @@ function BurgerIngredients({ items }) {
                   return (
                     <Ingredient
                       key={item._id}
-                      props={item}
+                      ingredientItem={item}
                       handleOpenModal={() => {
                         setModalIngredient(item)
                         setVisible(true)
@@ -110,7 +110,7 @@ function BurgerIngredients({ items }) {
 
       <div style={{ overflow: 'hidden', position: 'fixed' }}>
         <Modal onClose={() => handleCloseModal()} showModal={visible}>
-          <IngredientDetails props={modalIngredient} />
+          <IngredientDetails ingredient={modalIngredient} />
         </Modal>
       </div>
     </>

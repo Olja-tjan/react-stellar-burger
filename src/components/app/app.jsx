@@ -12,11 +12,15 @@ function App() {
 
   useEffect(() => {
     const getIngredientsData = async () => {
-      const res = await fetch(urlIngredients);
-      const data = await res.json();
       try {
-        setIsLoaded(false);
-        setIngredients(data.data);
+        const res = await fetch(urlIngredients);
+        if (res.ok) {
+          const data = await res.json();
+          return setIsLoaded(false),
+          setIngredients(data.data);
+        } else {
+          return Promise.reject(`Ошибка: ${res.status}`);
+        }
       } catch (err) {
         setError(err.message);
       }
