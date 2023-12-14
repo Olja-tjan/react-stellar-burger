@@ -2,11 +2,13 @@ import { useState } from 'react';
 import PropTypes from "prop-types";
 import styles from "./burger-constructor.module.css";
 import { ConstructorElement, CurrencyIcon, DragIcon, Button, Box, Typography } from '@ya.praktikum/react-developer-burger-ui-components';
+import useModal from '../../hooks/useModal';
 import Modal from '../modal/modal';
 import OrderDetails from '../order-details/order-details';
 
 function BurgerConstructor({ items }) {
-  const [visible, setVisible] = useState(false);
+
+  const { isModalOpen, openModal, closeModal } = useModal();
 
   const bun =
     items.find((item) => {
@@ -14,10 +16,6 @@ function BurgerConstructor({ items }) {
         ? (item)
         : null;
     });
-
-  function handleCloseModal() {
-    setVisible(false);
-  }
 
   return (
     <>
@@ -72,18 +70,18 @@ function BurgerConstructor({ items }) {
             <CurrencyIcon type="primary" />
           </div>
 
-          <Button htmlType="submit" type="primary" size="large" onClick={() => setVisible(true)}>
+          <Button htmlType="submit" type="primary" size="large" onClick={() => openModal(true)}>
             Оформить заказ
           </Button>
 
         </div>
       </section>
 
-      <div style={{ overflow: 'hidden', position: 'fixed' }}>
-        <Modal onClose={handleCloseModal} showModal={visible}>
+      {isModalOpen && (
+        <Modal onClose={closeModal}>
           <OrderDetails />
         </Modal>
-      </div>
+      )}
     </>
   );
 }

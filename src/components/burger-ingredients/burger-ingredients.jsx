@@ -2,20 +2,17 @@ import { useState } from 'react';
 import PropTypes from "prop-types";
 import styles from "./burger-ingredients.module.css";
 import { Tab, Box, Typography } from '@ya.praktikum/react-developer-burger-ui-components';
-
+import useModal from '../../hooks/useModal';
 import Ingredient from "../ingredient/ingredient";
 import Modal from '../modal/modal';
 import IngredientDetails from '../ingredient-details/ingredient-details';
 
 function BurgerIngredients({ items }) {
 
+  const { isModalOpen, openModal, closeModal } = useModal();
+
   const [current, setCurrent] = useState('bun');
   const [modalIngredient, setModalIngredient] = useState(null);
-  const [visible, setVisible] = useState(false);
-
-  function handleCloseModal() {
-    setVisible(false);
-  }
 
   return (
     <>
@@ -51,7 +48,7 @@ function BurgerIngredients({ items }) {
                       ingredientItem={item}
                       handleOpenModal={() => {
                         setModalIngredient(item)
-                        setVisible(true)
+                        openModal(true)
                       }}
                     />
                   );
@@ -71,7 +68,7 @@ function BurgerIngredients({ items }) {
                       ingredientItem={item}
                       handleOpenModal={() => {
                         setModalIngredient(item)
-                        setVisible(true)
+                        openModal(true)
                       }}
                     />
                   );
@@ -91,7 +88,7 @@ function BurgerIngredients({ items }) {
                       ingredientItem={item}
                       handleOpenModal={() => {
                         setModalIngredient(item)
-                        setVisible(true)
+                        openModal(true)
                       }}
                     />
                   );
@@ -104,11 +101,11 @@ function BurgerIngredients({ items }) {
 
       </section>
 
-      <div style={{ overflow: 'hidden', position: 'fixed' }}>
-        <Modal onClose={() => handleCloseModal()} showModal={visible}>
+      {isModalOpen && (
+        <Modal onClose={closeModal} >
           <IngredientDetails ingredient={modalIngredient} />
         </Modal>
-      </div>
+      )}
     </>
   );
 }
