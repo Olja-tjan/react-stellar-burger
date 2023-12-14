@@ -1,10 +1,6 @@
 import styles from './ingredient-details.module.css';
 import {ingredientPropType} from '../../utils/prop-types';
 
-IngredientDetails.propTypes = {
-  ingredient: ingredientPropType
-};
-
 function IngredientDetails({ ingredient }) {
   return (
     <section className={`${styles.ingredientContainer} pt-10 pl-10 pr-10 pb-15`}>
@@ -44,3 +40,7 @@ function IngredientDetails({ ingredient }) {
 }
 
 export default IngredientDetails;
+
+IngredientDetails.propTypes = {
+  ingredient: ingredientPropType
+};

@@ -7,10 +7,6 @@ import Ingredient from "../ingredient/ingredient";
 import Modal from '../modal/modal';
 import IngredientDetails from '../ingredient-details/ingredient-details';
 
-BurgerIngredients.propTypes = {
-  items: PropTypes.arrayOf(PropTypes.object)
-};
-
 function BurgerIngredients({ items }) {
 
   const [current, setCurrent] = useState('bun');
@@ -27,7 +23,7 @@ function BurgerIngredients({ items }) {
 
         <h1 className="text text_type_main-large mb-5">Соберите бургер</h1>
 
-        <div style={{ display: 'flex' }}>
+        <div className={styles.tabs}>
 
           <Tab value="bun" active={current === 'bun'} onClick={setCurrent}>
             Булки
@@ -118,3 +114,7 @@ function BurgerIngredients({ items }) {
 }
 
 export default BurgerIngredients;
+
+BurgerIngredients.propTypes = {
+  items: PropTypes.arrayOf(PropTypes.object)
+};

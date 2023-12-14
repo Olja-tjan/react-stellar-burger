@@ -8,12 +8,6 @@ import ModalOverlay from '../modal-overlay/modal-overlay';
 
 const modalRoot = document.getElementById("react-modals");
 
-Modal.propTypes = {
-  showModal: PropTypes.bool,
-  children: PropTypes.element,
-  onClose: PropTypes.func
-};
-
 function Modal({ showModal, children, onClose }) {
   useEffect(() => {
     const handleEscapeKey = (e) => {
@@ -27,22 +21,25 @@ function Modal({ showModal, children, onClose }) {
     };
   }, []);
 
-  return (
-    <div>
-      {showModal ? ReactDOM.createPortal(
+  return showModal
+    ? ReactDOM.createPortal(
         <ModalOverlay onClose={onClose}>
           <div className={styles.modal}>
             <button className={styles.closeButton} onClick={onClose}>
               <CloseIcon type="primary" />
             </button>
-            <div>{children}</div>
+            {children}
           </div>
         </ModalOverlay>,
         modalRoot
-      ) : null
-      }
-    </div>
-  )
+      )
+    : null
 }
 
 export default Modal;
+
+Modal.propTypes = {
+  showModal: PropTypes.bool,
+  children: PropTypes.element,
+  onClose: PropTypes.func
+};

@@ -1,11 +1,6 @@
 import PropTypes from "prop-types";
 import styles from"./ModalOverlay.module.css"
 
-ModalOverlay.propTypes = {
-  children: PropTypes.element,
-  onClose: PropTypes.func
-};
-
 function ModalOverlay({ children, onClose }) {
   const handleClose = (e) => {
       if (e.target === e.currentTarget) {
@@ -21,3 +16,8 @@ function ModalOverlay({ children, onClose }) {
 }
 
 export default ModalOverlay;
+
+ModalOverlay.propTypes = {
+  children: PropTypes.element,
+  onClose: PropTypes.func
+};

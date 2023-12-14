@@ -7,7 +7,7 @@ import { urlIngredients } from "../../utils/api";
 
 function App() {
   const [error, setError] = useState(null);
-  const [isLoaded, setIsLoaded] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
   const [ingredients, setIngredients] = useState([]);
 
   useEffect(() => {
@@ -23,13 +23,13 @@ function App() {
       } catch (err) {
         setError(err.message);
       } finally {
-        return setIsLoaded(false);
+        return setIsLoading(false);
       }
     }
     getIngredientsData();
   }, [])
 
-  if (isLoaded === false && ingredients.length > 0) {
+  if (isLoading === false && ingredients.length > 0) {
     return (
       <div className="p-10">
 

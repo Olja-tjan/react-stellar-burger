@@ -3,11 +3,6 @@ import PropTypes from "prop-types";
 import { Counter, CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import {ingredientPropType} from '../../utils/prop-types';
 
-Ingredient.propTypes = {
-  ingredientItem: ingredientPropType,
-  handleOpenModal: PropTypes.func
-};
-
 function Ingredient({ ingredientItem, handleOpenModal }) {
   return (
     <li key={ingredientItem._id} className={styles.ingredientContainer} onClick={handleOpenModal}>
@@ -28,3 +23,8 @@ function Ingredient({ ingredientItem, handleOpenModal }) {
 }
 
 export default Ingredient;
+
+Ingredient.propTypes = {
+  ingredientItem: ingredientPropType,
+  handleOpenModal: PropTypes.func
+};

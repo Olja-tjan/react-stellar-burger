@@ -5,12 +5,15 @@ import { ConstructorElement, CurrencyIcon, DragIcon, Button, Box, Typography } f
 import Modal from '../modal/modal';
 import OrderDetails from '../order-details/order-details';
 
-BurgerConstructor.propTypes = {
-  items: PropTypes.arrayOf(PropTypes.object)
-};
-
 function BurgerConstructor({ items }) {
   const [visible, setVisible] = useState(false);
+
+  const bun =
+    items.find((item) => {
+      return item.type === "bun"
+        ? (item)
+        : null;
+    });
 
   function handleCloseModal() {
     setVisible(false);
@@ -22,30 +25,23 @@ function BurgerConstructor({ items }) {
         <div className={`${styles.ingredients} pt-5 pb-5 pl-4 pr-4`}>
 
           <ul className={`${styles.ingredientsTop}`}>
-            {items.map((item) => {
-              return item.type === "bun"
-                ? (
-                  <ConstructorElement
-                    key={item._id}
-                    type="top"
-                    isLocked={true}
-                    text={`${item.name} (верх)`}
-                    price={item.price}
-                    thumbnail={item.image}
-                  />
-                )
-                : null;
-            })}
+            <ConstructorElement
+              key={bun._id}
+              type="top"
+              isLocked={true}
+              text={`${bun.name} (верх)`}
+              price={bun.price}
+              thumbnail={bun.image}
+            />
           </ul>
 
           <ul className={`${styles.ingredientsCenter} custom-scroll`}>
             {items.map((item) => {
               return item.type !== "bun"
                 ? (
-                  <div className={styles.ingredientsCenterContainer}>
+                  <div key={item._id} className={styles.ingredientsCenterContainer}>
                     <DragIcon type="primary" />
                     <ConstructorElement
-                      key={item._id}
                       text={`${item.name}`}
                       price={item.price}
                       thumbnail={item.image}
@@ -57,20 +53,14 @@ function BurgerConstructor({ items }) {
           </ul>
 
           <ul className={`${styles.ingredientsBottom}`}>
-            {items.map((item) => {
-              return item.type === "bun"
-                ? (
-                  <ConstructorElement
-                    key={item._id}
-                    type="bottom"
-                    isLocked={true}
-                    text={`${item.name} (низ)`}
-                    price={item.price}
-                    thumbnail={item.image}
-                  />
-                )
-                : null;
-            })}
+            <ConstructorElement
+              key={bun._id}
+              type="bottom"
+              isLocked={true}
+              text={`${bun.name} (низ)`}
+              price={bun.price}
+              thumbnail={bun.image}
+            />
           </ul>
 
         </div>
@@ -99,3 +89,7 @@ function BurgerConstructor({ items }) {
 }
 
 export default BurgerConstructor;
+
+BurgerConstructor.propTypes = {
+  items: PropTypes.arrayOf(PropTypes.object)
+};
