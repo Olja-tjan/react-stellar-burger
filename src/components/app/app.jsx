@@ -1,17 +1,52 @@
+import { useEffect, useState } from 'react';
 import styles from "./app.module.css";
-import { data } from "../../utils/data";
+import AppHeader from "../app-header/app-header";
+import BurgerIngredients from "../burger-ingredients/burger-ingredients";
+import BurgerConstructor from "../burger-constructor/burger-constructor";
+import { urlIngredients } from "../../utils/api";
 
 function App() {
-  return (
-    <div className={styles.app}>
-      <pre style={{
-      	margin: "auto",
-      	fontSize: "1.5rem"
-      }}>
-      	Измените src/components/app/app.jsx и сохраните для обновления.
-      </pre>
-    </div>
-  );
+  const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [ingredients, setIngredients] = useState([]);
+
+  useEffect(() => {
+    const getIngredientsData = async () => {
+      try {
+        const res = await fetch(urlIngredients);
+        if (res.ok) {
+          const data = await res.json();
+          return setIngredients(data.data);
+        } else {
+          return Promise.reject(`Ошибка: ${res.status}`);
+        }
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        return setIsLoading(false);
+      }
+    }
+    getIngredientsData();
+  }, [])
+
+  if (isLoading === false && ingredients.length > 0) {
+    return (
+      <div className="p-10">
+
+        <AppHeader />
+
+        <main className={styles.container}>
+          <BurgerIngredients items={ingredients} />
+          <BurgerConstructor items={ingredients} />
+        </main>
+
+      </div>
+    )
+  } else {
+    return (
+      <div>Ошибка: {error}</div>
+    )
+  }
 }
 
 export default App;
